@@ -13,36 +13,36 @@ const { src, dest, series, watch } = require(`gulp`),
 
 let browserChoice = `default`;
 
-async function brave () {
+async function brave() {
     browserChoice = `brave browser`;
 }
 
-async function chrome () {
+async function chrome() {
     browserChoice = `google chrome`;
 }
 
-async function edge () {
+async function edge() {
     // In Windows, the value might need to be “microsoft-edge”. Note the dash.
     browserChoice = `microsoft edge`;
 }
 
-async function firefox () {
+async function firefox() {
     browserChoice = `firefox`;
 }
 
-async function opera () {
+async function opera() {
     browserChoice = `opera`;
 }
 
-async function safari () {
+async function safari() {
     browserChoice = `safari`;
 }
 
-async function vivaldi () {
+async function vivaldi() {
     browserChoice = `vivaldi`;
 }
 
-async function allBrowsers () {
+async function allBrowsers() {
     browserChoice = [
         `brave browser`,
         `google chrome`,
@@ -82,7 +82,7 @@ let transpileJSForDev = () => {
 
 let compressHTML = () => {
     return src([`dev/html/*.html`, `dev/html/**/*.html`])
-        .pipe(htmlCompressor({collapseWhitespace: true}))
+        .pipe(htmlCompressor({ collapseWhitespace: true }))
         .pipe(dest(`prod`));
 };
 
@@ -128,7 +128,7 @@ let copyUnprocessedAssetsForProd = () => {
         `!dev/img/`,     // ignore images;
         `!dev/**/*.js`,  // ignore JS;
         `!dev/styles/**` // and, ignore Sass/CSS.
-    ], {dot: true})
+    ], { dot: true })
         .pipe(dest(`prod`));
 };
 
@@ -179,7 +179,7 @@ async function clean() {
     process.stdout.write(`\n`);
 }
 
-async function listTasks () {
+async function listTasks() {
     let exec = require(`child_process`).exec;
 
     exec(`gulp --tasks`, function (error, stdout, stderr) {
@@ -204,7 +204,7 @@ let lintCSS = () => {
         .pipe(CSSLinter({
             failAfterError: false,
             reporters: [
-                {formatter: `string`, console: true}
+                { formatter: `string`, console: true }
             ]
         }));
 };
